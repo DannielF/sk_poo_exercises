@@ -61,4 +61,4 @@ These are the exercises that I completed:
 
 The workspace contains two folders by default, where:
 
-- `exercise_1/src`: the folder to maintain sources
+- `exercise_n/src`: the folder to maintain sources
