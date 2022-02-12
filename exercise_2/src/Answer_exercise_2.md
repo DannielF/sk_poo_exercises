@@ -10,7 +10,7 @@
     JVM solo busca el metodo main con un string array como argumento, en orden para ejecutar otros metodos main.
     necesitas llamarlos desde adentro del public stativ void main(String[] args).
 
-####Ejemplo en Java
+### Ejemplo en Java
 ```Java
 class GFG {
     
