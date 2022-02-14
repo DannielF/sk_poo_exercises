@@ -1,5 +1,6 @@
 package com.poo.co.exercise_4;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -39,21 +40,30 @@ public class Application {
                         Cada vehiculo tiene las siguientes caracteristicas:\s
                         id, tiene pasajeros, numero de pasajeros, numero de ruedas, fecha de la placa,
                         se desplaza por. \s
-                        Escribe los valores del vehiculo separados por un espacio\s
+                        \s
                         Ej: 1 true 2 2 2020 tierra\s
                         Ej: 2 false 0 0 2003 aire\s
                         \s""");
 
                 Scanner inputVehicle = new Scanner(System.in);
-                String valuesVehicle = inputVehicle.nextLine();
-                String[] paramsVehicle = valuesVehicle.split("\\s+");
-                Integer id = Integer.parseInt(paramsVehicle[0]);
-                boolean hasPassengers = Boolean.parseBoolean(paramsVehicle[1]);
-                Integer numberPassengers = Integer.parseInt(paramsVehicle[2]);
-                Integer numberWheels = Integer.parseInt(paramsVehicle[3]);
-                Integer plateDate = Integer.parseInt(paramsVehicle[4]);
-                String movesOver = paramsVehicle[5];
-                newGarage.addVehicle(new Vehicle(id, hasPassengers, numberPassengers, numberWheels, plateDate, movesOver));
+                ArrayList<Object> paramsVehicle = new ArrayList<Object>();
+
+                String[] dataTypes = {"Integer", "Boolean", "Integer", "Integer", "Integer", "String"};
+                String[] infoValues = {"Id", "Tiene pasajeros", "Numero de pasajeros", "Numero de ruedas",
+                        "Fecha de la placa", "Se desplaza por"};
+
+                int dataTypesLen = dataTypes.length;
+                for (int i = 0; i < dataTypesLen; i++) {
+                    System.out.println(infoValues[i]+" :");
+                    switch (dataTypes[i]) {
+                        case "Integer" -> paramsVehicle.add(inputVehicle.nextInt());
+                        case "Boolean" -> paramsVehicle.add(inputVehicle.nextBoolean());
+                        case "String" -> paramsVehicle.add(inputVehicle.next());
+                    }
+                }
+                newGarage.addVehicle(new Vehicle((int)paramsVehicle.get(0), (boolean)paramsVehicle.get(1),
+                        (int)paramsVehicle.get(2), (int)paramsVehicle.get(3), (int)paramsVehicle.get(4),
+                        (String) paramsVehicle.get(5)));
 
             } else if ("2".equals(optionSelected)) {
                 newGarage.printDataGarage();
