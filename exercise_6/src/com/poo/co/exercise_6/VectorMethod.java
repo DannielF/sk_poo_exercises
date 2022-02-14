@@ -22,23 +22,30 @@ public class VectorMethod {
     public static void vectorUserInput(final Integer sizeVector) {
         final Scanner userInput = new Scanner(System.in);
         final Vector<Integer> inputUserVector = new Vector<>(sizeVector);
+        boolean continueLoop = true;
 
         System.out.println("Introduce un numero : \s");
         Integer integerToAdd = userInput.nextInt();
         inputUserVector.add(integerToAdd);
 
-        for (int i = 0; i <= sizeVector; i++) {
-            System.out.println("Introduce un numero : \s");
-            integerToAdd = userInput.nextInt();
+        do {
+            try {
+                System.out.println("Introduce un numero : \s");
+                integerToAdd = userInput.nextInt();
 
-            if (integerToAdd.equals(inputUserVector.lastElement())) {
-                inputUserVector.add(integerToAdd);
-                System.out.println(inputUserVector);
-                break;
+                if (integerToAdd.equals(inputUserVector.lastElement())) {
+                    inputUserVector.add(integerToAdd);
+                    System.out.println(inputUserVector);
+                    continueLoop = false;
 
-            } else {
-                inputUserVector.add(integerToAdd);
+                } else {
+                    inputUserVector.add(integerToAdd);
+                }
+
+            } catch (InputMismatchException exception) {
+                System.err.println("\nDebe ser entero, no texto. \t Excepcion : " + exception);
+                userInput.nextLine();
             }
-        }
+        } while (continueLoop);
     }
 }
