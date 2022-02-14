@@ -68,9 +68,6 @@ public class Application {
             } else if ("2".equals(optionSelected)) {
                 newGarage.printDataGarage();
             }
-
-
-
         } while ("1".equals(optionSelected) || "2".equals(optionSelected));
     }
 }
