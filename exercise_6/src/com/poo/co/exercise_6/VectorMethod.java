@@ -34,7 +34,6 @@ public class VectorMethod {
                 integerToAdd = userInput.nextInt();
 
                 if (integerToAdd.equals(inputUserVector.lastElement())) {
-                    inputUserVector.add(integerToAdd);
                     System.out.println(inputUserVector);
                     continueLoop = false;
 
